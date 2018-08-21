@@ -1,0 +1,276 @@
+{
+  "name": "drug-arrests",
+  "datapackage_version": "1.0-beta.18",
+  "title": "Drug Arrests",
+  "description": "Drug Arrests reports the number and rate (per 10,000) of arrests due to drug law offenses, per age range.",
+  "version": "1.0",
+  "licenses": [{
+    "url": "http://opendatacommons.org/licenses/pddl/",
+    "name": "Open Data Commons Public Domain",
+    "version": "1.0",
+    "id": "odc-pddl"
+  }],
+  "sources": [{
+    "name": "ctdespp",
+    "web": ""
+  }],
+  "author":[{
+    "name": "Jenna Daly",
+    "email": "jdaly@ctdata.org",
+    "web": "http://ctdata.org"
+  }],
+  "contributor": [],
+  "resources": [{
+    "path": "data/drug-arrests_2015.csv",
+    "format": "csv",
+    "schema": {
+      "fields": [{
+          "name": "Town",
+          "type": "string",
+          "dimension": false
+        }, {
+          "name": "FIPS",
+          "type": "string",
+          "dimension": false
+        }, {
+          "name": "Year",
+          "type": "string",
+          "dimension": false
+        }, {
+          "name": "Age Range",
+          "type": "string",
+          "dimension": true,
+          "constraints": {
+            "enum": [
+              "Total", 
+              "10 years and over", 
+              "10 to 17 years", 
+              "18 to 24 years", 
+              "18 years and over"
+            ]
+          }
+        }, {          
+          "name": "Measure Type",
+          "type": "string",
+          "dimension": true,
+          "constraints": {
+            "enum": [
+              "Number", 
+              "Rate (per 10,000)"
+            ]
+          }
+        }, {
+          "name": "Variable",
+          "type": "string",
+          "dimension": true,
+          "constraints": {
+            "enum": [
+              "Drug Arrests", 
+              "Margins of Error"
+            ]
+          }
+        }, {
+          "name": "Value",
+          "type": "number",
+          "dimension": false
+        }]
+      }
+    }
+  ],
+  "last_modified": "08/20/2018",
+  "ckan_extras": {
+    "full_description": {
+      "ckan_name": "Full Description",
+      "value": "Every month law enforcement agencies throughout the state submit UCR data. They indicate the number of offenses brought to their attention through such sources as victim, police or witness reports. Drug offenses includ possession, sale, use, growing, and manufacturing of narcotic drugs. Connecticut Department of Emergency Services and Public Protection collects and CTdata.org reports annual data.",
+      "type": "string"
+    },
+    "suppression": {
+      "ckan_name": "Suppression",
+      "value": "",
+      "type": "string"
+    },
+    "technical_notes": {
+      "ckan_name": "Technical Notes",
+      "value": "",
+      "type": "string"
+    },
+    "socrata": {
+      "ckan_name": "Socrata",
+      "value": "True",
+      "type": "string"
+    },
+    "socrata_url": {
+      "ckan_name": "Socrata Dataset URL",
+      "value": "https://data.ct.gov/Public-Safety/Uniform-Crime-Reporting-System-Arrests-2015/r6vz-twt4",
+      "type": "string"
+    },
+    "socrata_dataset_name": {
+      "ckan_name": "Socrata Dataset Name",
+      "value": "Uniform Crime Reporting System Arrests ",
+      "type": "string"
+    }, 
+    "domain": {
+      "ckan_name": "Domain",
+      "value": "Health",
+      "type": "string"
+    },
+    "subdomain": {
+      "ckan_name": "Subdomain",
+      "value": "Substance Abuse",
+      "type": "string"
+    },
+    "geography": {
+      "ckan_name": "Geography",
+      "value": "Town",
+      "type": "string",
+      "constraints": {"enum": ["Town", "County", "Town/County", "District", "Other"]}
+    },
+    "frequency": {
+      "ckan_name": "Frequency",
+      "value": "Annual",
+      "type": "string"
+    },
+    "years_in_catalog": {
+      "ckan_name": "Years in Catalog",
+      "value": ["2010", "2011", "2012", "2013", "2014", "2015"],
+      "type": "array"
+    },
+    "latest_year": {
+      "ckan_name": "Latest Year Available",
+      "value": "2015",
+      "type": "string"
+    },
+    "disabled_views": {
+      "ckan_name": "Disabled Views",
+      "value": [],
+      "type": "array",
+      "constraints": {"enum": ["map", "table", "bar", "line"]}
+    },
+    "units": {
+      "ckan_name": "Units",
+      "value": {
+        "Number": "",
+        "Percent": "%"
+      }
+    },
+    "expected_number_of_geographies": {
+      "ckan_name": "Expected Number of Unique Geographies",
+      "value": 170,
+       "type": "string"
+      },  
+    "default": {      
+      "ckan_name": "Default",
+      "value": {
+       "Town": "Connecticut", 
+        "Year": "2015",
+        "Measure Type": ["Number", "Rate (per 10,000)"],
+        "Variable": ["Drug Arrests"]
+      },
+      "type": "object"
+    }  
+  },
+  "spot_checks": [
+    {
+      "type": "$lookup",
+      "filter": {
+        "Town": "Middletown",
+        "Year": "2010",
+        "Age Range": "Total",
+        "Variable": "Drug Arrests",
+        "Measure Type": "Number" 
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "int",
+        "value": 376
+      } 
+    },    
+    {
+      "type": "$lookup",
+      "filter": {
+        "Town": "Groton",
+        "Year": "2011",
+        "Age Range": "10 years and over",        
+        "Variable": "Margins of Error",
+        "Measure Type": "Rate (per 10,000)" 
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "float",
+        "value": 1.07
+      } 
+    },    
+    {
+      "type": "$lookup",
+      "filter": {
+        "Town": "Putnam",
+        "Year": "2012",
+        "Age Range": "10 to 17 years",        
+        "Variable": "Drug Arrests",
+        "Measure Type": "Number" 
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "int",
+        "value": 4
+      } 
+    },    
+    {
+      "type": "$lookup",
+      "filter": {
+        "Town": "Tolland",
+        "Year": "2013",
+        "Variable": "Drug Arrests",
+        "Age Range": "18 to 24 years",        
+        "Measure Type": "Rate (per 10,000)" 
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "float",
+        "value": 30.15
+      } 
+    },    
+    {
+      "type": "$lookup",
+      "filter": {
+        "Town": "Hartford",
+        "Year": "2014",
+        "Age Range": "18 years and over",        
+        "Variable": "Drug Arrests",
+        "Measure Type": "Number" 
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "int",
+        "value": 1017
+      } 
+    },    
+    {
+      "type": "$lookup",
+      "filter": {
+        "Town": "Connecticut",
+        "Year": "2015",
+        "Age Range": "Total",        
+        "Variable": "Drug Arrests",
+        "Measure Type": "Rate (per 10,000)" 
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "float",
+        "value":  23.12
+      } 
+    }
+  ],
+  "dimension_groups": [
+    {
+      "Measure Type": ["Number"],
+      "Age Range": ["Total", "10 years and over", "10 to 17 years", "18 to 24 years", "18 years and over"],
+      "Variable": ["Drug Arrests"]
+    },
+    {
+      "Measure Type": ["Rate per (10,000)"],
+      "Age Range": ["Total", "10 years and over", "10 to 17 years", "18 to 24 years", "18 years and over"],
+      "Variable": ["Drug Arrests", "Margins of Error"]
+    } 
+  ]
+}
