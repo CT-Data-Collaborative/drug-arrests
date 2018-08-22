@@ -81,7 +81,7 @@
   "ckan_extras": {
     "full_description": {
       "ckan_name": "Full Description",
-      "value": "Every month law enforcement agencies throughout the state submit UCR data. They indicate the number of offenses brought to their attention through such sources as victim, police or witness reports. Drug offenses includ possession, sale, use, growing, and manufacturing of narcotic drugs. Connecticut Department of Emergency Services and Public Protection collects and CTdata.org reports annual data.",
+      "value": "The Connecticut Department of Emergency Services and Public Protection (prior to 2011 called the Department of Public Safety) collects and reports crime data in the Uniform Crime Report (UCR) program. This data reports the number of arrests, and is collected and reported to the state by each agency monthly. The DESPP reports this collected data annually. CTData has aggregated agency data in two locations to create a uniform level of reporting. For the town of Putnam, the Municipal Police Department and Connecticut State Police agency data has been aggregated. For Groton, the data covering the Town of Groton, the City of Groton, and Groton Long Point have been aggregated. Drug offenses include possession, sale, use, growing, and manufacturing of narcotic drugs. The denominators for the rates are derived from 5-Year ACS population figures. As such, the rate of arrests is given with a Margin of Error calculated from the Margin of Error present in the population data.",
       "type": "string"
     },
     "suppression": {
@@ -91,7 +91,7 @@
     },
     "technical_notes": {
       "ckan_name": "Technical Notes",
-      "value": "",
+      "value": "To calculate the rate for a specified indicator age range, the number of drug arrests within the specified age range is divided by the population within the specified age range and multiplied by 10,000.",
       "type": "string"
     },
     "socrata": {
@@ -106,7 +106,7 @@
     },
     "socrata_dataset_name": {
       "ckan_name": "Socrata Dataset Name",
-      "value": "Uniform Crime Reporting System Arrests ",
+      "value": "Uniform Crime Reporting System Arrests",
       "type": "string"
     }, 
     "domain": {
@@ -119,6 +119,16 @@
       "value": "Substance Abuse",
       "type": "string"
     },
+    "numerator": {
+      "ckan_name": "Numerator",
+      "value": "Number of drug offenses per age group.",
+      "type": "string"
+    },
+    "denominator": {
+      "ckan_name": "Denominator",
+      "value": "Population for age group, reported by the US Census.",
+      "type": "string"
+    },     
     "geography": {
       "ckan_name": "Geography",
       "value": "Town",
