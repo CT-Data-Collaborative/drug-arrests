@@ -174,7 +174,8 @@
        "Town": "Connecticut", 
         "Year": "2015",
         "Measure Type": ["Number", "Rate (per 10,000)"],
-        "Variable": ["Drug Arrests"]
+        "Variable": ["Drug Arrests"], 
+        "Age Range": "Total"
       },
       "type": "object"
     }  
