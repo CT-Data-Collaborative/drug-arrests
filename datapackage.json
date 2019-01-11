@@ -15,13 +15,13 @@
     "web": ""
   }],
   "author":[{
-    "name": "Jenna Daly",
-    "email": "jdaly@ctdata.org",
+    "name": "Connecticut Data Collaborative",
+    "email": "info@ctdata.org",
     "web": "http://ctdata.org"
   }],
   "contributor": [],
   "resources": [{
-    "path": "data/drug-arrests_2015.csv",
+    "path": "data/drug-arrests_2016.csv",
     "format": "csv",
     "schema": {
       "fields": [{
@@ -42,20 +42,20 @@
           "dimension": true,
           "constraints": {
             "enum": [
-              "Total", 
-              "10 years and over", 
-              "10 to 17 years", 
-              "18 to 24 years", 
+              "Total",
+              "10 years and over",
+              "10 to 17 years",
+              "18 to 24 years",
               "18 years and over"
             ]
           }
-        }, {          
+        }, {
           "name": "Measure Type",
           "type": "string",
           "dimension": true,
           "constraints": {
             "enum": [
-              "Number", 
+              "Number",
               "Rate (per 10,000)"
             ]
           }
@@ -65,7 +65,7 @@
           "dimension": true,
           "constraints": {
             "enum": [
-              "Drug Arrests", 
+              "Drug Arrests",
               "Margins of Error"
             ]
           }
@@ -77,7 +77,7 @@
       }
     }
   ],
-  "last_modified": "08/20/2018",
+  "last_modified": "01/11/2019",
   "ckan_extras": {
     "full_description": {
       "ckan_name": "Full Description",
@@ -101,14 +101,14 @@
     },
     "socrata_url": {
       "ckan_name": "Socrata Dataset URL",
-      "value": "https://data.ct.gov/Public-Safety/Uniform-Crime-Reporting-System-Arrests-2015/r6vz-twt4",
+      "value": "https://data.ct.gov/Public-Safety/Uniform-Crime-Reporting-System-Arrests-2016/64f7-5788",
       "type": "string"
     },
     "socrata_dataset_name": {
       "ckan_name": "Socrata Dataset Name",
       "value": "Uniform Crime Reporting System Arrests",
       "type": "string"
-    }, 
+    },
     "domain": {
       "ckan_name": "Domain",
       "value": "Health",
@@ -128,7 +128,7 @@
       "ckan_name": "Denominator",
       "value": "Population for age group, reported by the US Census.",
       "type": "string"
-    },     
+    },
     "geography": {
       "ckan_name": "Geography",
       "value": "Town",
@@ -142,12 +142,12 @@
     },
     "years_in_catalog": {
       "ckan_name": "Years in Catalog",
-      "value": ["2010", "2011", "2012", "2013", "2014", "2015"],
+      "value": ["2010", "2011", "2012", "2013", "2014", "2015", "2016"],
       "type": "array"
     },
     "latest_year": {
       "ckan_name": "Latest Year Available",
-      "value": "2015",
+      "value": "2016",
       "type": "string"
     },
     "disabled_views": {
@@ -167,18 +167,18 @@
       "ckan_name": "Expected Number of Unique Geographies",
       "value": 170,
        "type": "string"
-      },  
-    "default": {      
+      },
+    "default": {
       "ckan_name": "Default",
       "value": {
-       "Town": "Connecticut", 
-        "Year": "2015",
+       "Town": "Connecticut",
+        "Year": "2016",
         "Measure Type": ["Number", "Rate (per 10,000)"],
-        "Variable": ["Drug Arrests"], 
+        "Variable": ["Drug Arrests"],
         "Age Range": "Total"
       },
       "type": "object"
-    }  
+    }
   },
   "spot_checks": [
     {
@@ -188,88 +188,88 @@
         "Year": "2010",
         "Age Range": "Total",
         "Variable": "Drug Arrests",
-        "Measure Type": "Number" 
+        "Measure Type": "Number"
       },
       "expected": {
         "type": "$match",
         "number type": "int",
         "value": 376
-      } 
-    },    
+      }
+    },
     {
       "type": "$lookup",
       "filter": {
         "Town": "Groton",
         "Year": "2011",
-        "Age Range": "10 years and over",        
+        "Age Range": "10 years and over",
         "Variable": "Margins of Error",
-        "Measure Type": "Rate (per 10,000)" 
+        "Measure Type": "Rate (per 10,000)"
       },
       "expected": {
         "type": "$match",
         "number type": "float",
         "value": 1.07
-      } 
-    },    
+      }
+    },
     {
       "type": "$lookup",
       "filter": {
         "Town": "Putnam",
         "Year": "2012",
-        "Age Range": "10 to 17 years",        
+        "Age Range": "10 to 17 years",
         "Variable": "Drug Arrests",
-        "Measure Type": "Number" 
+        "Measure Type": "Number"
       },
       "expected": {
         "type": "$match",
         "number type": "int",
         "value": 4
-      } 
-    },    
+      }
+    },
     {
       "type": "$lookup",
       "filter": {
         "Town": "Tolland",
         "Year": "2013",
         "Variable": "Drug Arrests",
-        "Age Range": "18 to 24 years",        
-        "Measure Type": "Rate (per 10,000)" 
+        "Age Range": "18 to 24 years",
+        "Measure Type": "Rate (per 10,000)"
       },
       "expected": {
         "type": "$match",
         "number type": "float",
         "value": 30.15
-      } 
-    },    
+      }
+    },
     {
       "type": "$lookup",
       "filter": {
         "Town": "Hartford",
         "Year": "2014",
-        "Age Range": "18 years and over",        
+        "Age Range": "18 years and over",
         "Variable": "Drug Arrests",
-        "Measure Type": "Number" 
+        "Measure Type": "Number"
       },
       "expected": {
         "type": "$match",
         "number type": "int",
         "value": 1017
-      } 
-    },    
+      }
+    },
     {
       "type": "$lookup",
       "filter": {
         "Town": "Connecticut",
         "Year": "2015",
-        "Age Range": "Total",        
+        "Age Range": "Total",
         "Variable": "Drug Arrests",
-        "Measure Type": "Rate (per 10,000)" 
+        "Measure Type": "Rate (per 10,000)"
       },
       "expected": {
         "type": "$match",
         "number type": "float",
         "value":  23.12
-      } 
+      }
     }
   ],
   "dimension_groups": [
@@ -282,6 +282,6 @@
       "Measure Type": ["Rate per (10,000)"],
       "Age Range": ["Total", "10 years and over", "10 to 17 years", "18 to 24 years", "18 years and over"],
       "Variable": ["Drug Arrests", "Margins of Error"]
-    } 
+    }
   ]
 }
